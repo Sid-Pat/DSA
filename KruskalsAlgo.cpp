@@ -8,6 +8,7 @@ int parent[N];
 int siz[N];
 
 void make(int v){
+	siz[v]=1;
 	parent[v]=v;
 }
 
