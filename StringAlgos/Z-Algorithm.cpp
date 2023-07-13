@@ -149,6 +149,35 @@ void solve(){
     }
 
     cout<<a<<endl;
+
+    
+    /*
+        Z Algorithm  : O(N)
+                            */
+                
+vector<int> z(n,0);
+
+    //Just like KMP
+    int l= 0, r=0;
+    for(int i=1;i<n;i++){
+//Headstart inside segment
+        if(i<r){
+            z[i] = min(r-i , z[i-l]);
+        }
+
+//matching like KMP
+        while(i+z[i] < n && s[z[i]]==s[i+z[i]]){
+            z[i]++;
+        }
+
+//Border right se badhi karte jao
+        if(i+z[i] > r){
+            l = i;
+            r = i+z[i];
+        }
+    }
+
+    cout<<z<<endl;
     
     // cout<<v<<"\n";
 }
